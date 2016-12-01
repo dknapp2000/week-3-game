@@ -1,0 +1,64 @@
+
+header h1 {
+	height: 130px;
+	/*width: 100%;*/
+	z-index: 0;
+	display: block;
+	font-size: 112px;
+	text-align: center;
+	font-weight: bold;
+	font-family: nightmare, Georgia, serif;
+	border: 2px solid black;
+	padding-top: 10px;
+	padding-bottom: 0px;
+    background-color: #f5f2cb;
+    /*color: #d40808;*/
+}
+
+body {
+	/*background-image: url("../images/hease.png");*/
+	background-color: #ebebeb;
+	width: 960px;
+	padding-left: 40px;
+}
+
+@font-face {
+	font-family: 'nightmare';
+	src: url('../fonts/nightmare.ttf');
+}
+
+#gamewindow {
+	align: center;
+	width: 100%;
+}
+
+#gallows {
+	background-image: url('../images/background.jpg');
+	padding: 30px 20px 60px 20px;
+}
+
+#instructions, #wordbox, #status, #wasted, #message {
+	font-size: 36px;
+	text-align: center;
+	border: 2px #777 solid;
+	width: 350px;
+	padding: 20px;
+	position: relative;
+	top: -585px;
+	left: 525px;
+	background-color: #f5f2cb;
+}
+
+#wasted {
+	height: 80px;
+}
+
+#message {
+	font-size: 16pt;
+	color: red;
+	height: 40px;
+}
+
+#word {
+	letter-spacing: .5em
+}

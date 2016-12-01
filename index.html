@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HangIt!</title>
+	<link rel="stylesheet" href="assets/css/reset.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+</head>
+	<body>
+
+		<header>
+			<h1>~ Welcome to the gallows ~</h1>
+		</header>
+		
+		<div id="welcome" class="container">
+
+		</div>
+
+		<div id="gamewindow">
+
+			<div id="gallows">
+				<img src="assets/images/hung.png" alt="">
+			</div>
+
+			<div id="instructions">
+				<p>Guess the word . . .</p>
+				<p>. . . or die.</p>
+			</div>
+			
+			<div id="wordbox">
+				<span id="word">_ _ _ _ _ _ _ _ </span>
+			</div>
+
+			<div id="status">
+				<p>Guesses remaining: <span id="remaining">12</span></p>
+				<p>Found letters: <span id="foundletters">0</span></p>
+				<p>Misses: <span id="misses">0</span></p>
+			</div>
+
+			<div id="wasted">
+				<p><span id="usedletters">Used letters</span></p>
+			</div>
+
+			<div id="message">
+				<span id="messagetext">Welcome, won't you play?</span>
+			</div>
+
+		</div>
+
+	</body>
+
+	<script src="assets/javascript/game.js"></script>
+
+</html>
