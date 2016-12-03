@@ -58,6 +58,10 @@ body {
 	height: 80px;
 }
 
+#wordbox {
+	heigth: 40;
+}
+
 #message {
 	font-size: 16pt;
 	color: red;
