@@ -141,12 +141,14 @@ window.onload = function() {
 	game.init();
 }
 
+// document.onkeyup = function( event ) {
+// 	console.log( event.key );
+// 	game.keyPressed( event.key );
+// }
 
-document.onkeyup = function( event ) {
-	console.log( event.key );
+$(document).keyup( function() {
+	console.log( "jQuery trap of keyup" );
 	game.keyPressed( event.key );
-}
-
-
+});
 
 
