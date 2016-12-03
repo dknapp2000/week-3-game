@@ -34,8 +34,11 @@ var game = {
 	ptrMisses 			: "",
 	ptrMessage			: "",
 
+	// Log function -- allows me to turn off all logging with one change
 	log					: function( pMsg ) {
-		console.log( pMsg )
+		if ( 1 === 0 ) {
+			console.log( pMsg );
+		}
 	},
 
 	// Update the dom with all values at once
@@ -57,7 +60,8 @@ var game = {
 		this.ptrUsedLetters		 = document.getElementById( "usedletters" );
 		this.ptrMessage          = document.getElementById( "messagetext" );
 		this.ptrWord 		     = document.getElementById( "word" );
-		// Initialize the work for the game
+		this.saddiv				 = document.getElementById( "saddiv" );
+		// Initialize the word for the game
 		wordix = Math.floor( Math.random() * 100 );
 		this.word = this.wordlist[ wordix ];
 		this.wordlength = this.word.length;
@@ -69,7 +73,7 @@ var game = {
 	keyPressed			: function keyPressed( pKey ) {
 
 		if ( this.gameOver ) { return }
-			
+
 		this.log( "Key pressed is : '" + pKey + "', length = " + pKey.length );
 
 		// If this is not a single character entry, then it's not a character--ignore it
@@ -121,13 +125,12 @@ var game = {
 		if ( this.remainingGuesses < 1 ) {
 			this.message = "Now, isn't that a shame. . . Please step up to the gallows.";
 			this.gameOver = true;
+
 		}
 	},
 
 	replaceat 			: function(pString, index, character) {
-		this.log( "######replaceat( " + pString + ", " + index + ", " + character );
 	    var result = pString.substr(0, index) + character + pString.substr(index+character.length);
-	    this.log( "======" + result );
 	    return result;
 	}
 
@@ -139,9 +142,11 @@ window.onload = function() {
 }
 
 
-document.onkeyup = function() {
+document.onkeyup = function( event ) {
+	console.log( event.key );
 	game.keyPressed( event.key );
-
 }
+
+
 
 
