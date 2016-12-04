@@ -17,6 +17,7 @@ header h1 {
 
 body {
 	/*background-image: url("../images/hease.png");*/
+	font-family: 'Berkshire Swash', cursive;
 	background-color: #ebebeb;
 	width: 960px;
 	padding-left: 40px;
