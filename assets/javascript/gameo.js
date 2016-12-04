@@ -67,7 +67,7 @@ var game = {
 		this.wordlength = this.word.length;
 		this.ulines = this.ulines.substring( 0, this.wordlength );
 		this.updateDom();
-		alert( this.word );
+		// alert( this.word );
 		return this;
 	},
 
