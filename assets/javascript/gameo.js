@@ -131,6 +131,7 @@ var game = {
 			this.gameOver = true;
 			return;
 		} else if ( this.remainingGuesses < 1 ) {
+			// He lost
 			this.message = "Now, isn't that a shame. . . Please step up to the gallows.";
 			this.gameOver = true;
 			// this.ptrSadDiv.style.display = "block";

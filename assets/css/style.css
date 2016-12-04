@@ -79,6 +79,8 @@ body {
 	left: 175px;
 }
 
-#cheat {
-	height: 500px;
+#cheat, #sad {
+height: 420px;
+    border: solid 2px #999;
+    width: 620px;
 }
