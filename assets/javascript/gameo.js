@@ -36,7 +36,7 @@ var game = {
 
 	// Log function -- allows me to turn off all logging with one change
 	log					: function( pMsg ) {
-		if ( 1 === 0 ) {
+		if ( 1 === 1 ) {
 			console.log( pMsg );
 		}
 	},
@@ -60,13 +60,14 @@ var game = {
 		this.ptrUsedLetters		 = document.getElementById( "usedletters" );
 		this.ptrMessage          = document.getElementById( "messagetext" );
 		this.ptrWord 		     = document.getElementById( "word" );
-		this.saddiv				 = document.getElementById( "saddiv" );
+		this.ptrSadDiv		     = document.getElementById( "saddiv" );
 		// Initialize the word for the game
 		wordix = Math.floor( Math.random() * 100 );
 		this.word = this.wordlist[ wordix ];
 		this.wordlength = this.word.length;
 		this.ulines = this.ulines.substring( 0, this.wordlength );
 		this.updateDom();
+		alert( this.word );
 		return this;
 	},
 
@@ -116,20 +117,28 @@ var game = {
 		this.updateDom();
 	},
 
-	checkStatus			: function() {
+	checkStatus	: function() {
+
 		if ( this.ulines === this.word ) {
 			// He won
-			this.message = "Hmm... It seems that you live to play again.";
+			this.log( this.remainingGuesses + "guesses left")
+			if ( this.remainingGuesses === 0 ) {
+				$("#cheat").fadeIn(1500);
+			} else {
+				this.message = "Hmm... It seems that you live to play again.";
+			}
 			this.gameOver = true;
-		}
-		if ( this.remainingGuesses < 1 ) {
+			return;
+		} else if ( this.remainingGuesses < 1 ) {
 			this.message = "Now, isn't that a shame. . . Please step up to the gallows.";
 			this.gameOver = true;
-
+			// this.ptrSadDiv.style.display = "block";
+			$("#sad").fadeIn( 1500 );
 		}
+		
 	},
 
-	replaceat 			: function(pString, index, character) {
+	replaceat 	: function(pString, index, character) {
 	    var result = pString.substr(0, index) + character + pString.substr(index+character.length);
 	    return result;
 	}
@@ -147,7 +156,6 @@ window.onload = function() {
 // }
 
 $(document).keyup( function() {
-	console.log( "jQuery trap of keyup" );
 	game.keyPressed( event.key );
 });
 

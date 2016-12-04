@@ -74,6 +74,10 @@ body {
 
 #saddiv {
 	position: relative;
-	top: -1050px;
-	left: 150px;
+	top: -1100px;
+	left: 175px;
+}
+
+#cheat {
+	height: 500px;
 }
