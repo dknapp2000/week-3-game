@@ -54,6 +54,7 @@ var game = {
 
 	// Initialize any variables in the object (probably a better way to do this)
 	init 				: function init() {
+		// Grab pointers to the dom objects that I'll be updating.
 		this.ptrRemainingGuesses = document.getElementById( "remaining" );
 		this.ptrFound 			 = document.getElementById( "foundletters" );
 		this.ptrMisses 			 = document.getElementById( "misses" );
@@ -134,7 +135,14 @@ var game = {
 			this.gameOver = true;
 			// this.ptrSadDiv.style.display = "block";
 			$("#sad").fadeIn( 1500 );
+
+			// After a breif delay show the word in the message box
+			setTimeout(function() { 
+				game.message = "The word was, '" + game.word + "'"; 
+				game.updateDom();
+			}, 3000);
 		}
+
 		
 	},
 

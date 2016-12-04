@@ -1,6 +1,11 @@
 
 /* Words, a small things with disasterous consequences */
 
+/* PLEASE NOTE:
+ * This code has been completley replaced by 
+ * and object based version of the game.
+ * The new code is gameo.js 
+ */
 var wordix = Math.floor( Math.random() * 100 );
 var word = "";
 var wordlength = word.length;
