@@ -165,7 +165,7 @@ window.onload = function() {
 // }
 
 $(document).keyup( function() {
-	game.keyPressed( event.key );
+	game.keyPressed( event.key.toLowerCase() );
 });
 
 
