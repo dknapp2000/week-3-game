@@ -164,8 +164,8 @@ window.onload = function() {
 // 	game.keyPressed( event.key );
 // }
 
-$(document).keyup( function() {
-	game.keyPressed( event.key.toLowerCase() );
+$(document).keyup( function(e) {
+	game.keyPressed( e.key.toLowerCase() );
 });
 
 
