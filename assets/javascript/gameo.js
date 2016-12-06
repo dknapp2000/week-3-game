@@ -49,7 +49,9 @@ var game = {
 		this.ptrUsedLetters.textContent 	 = this.usedLetters;
 		this.ptrWord.textContent 			 = this.ulines;
 		// clear and fadeIn the new message.
-		$("#messagetext").text(this.message).fadeIn(500);
+		$("#messagetext").css("display","none");
+		this.ptrMessage.textContent			 = this.message;
+		$("#messagetext").fadeIn(500);
 		return this;
 	},
 
