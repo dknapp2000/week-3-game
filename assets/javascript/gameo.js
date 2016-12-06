@@ -42,18 +42,20 @@ var game = {
 	},
 
 	// Update the dom with all values at once
-	updateDom 			: function() {
+	updateDom : function() {
 		this.ptrRemainingGuesses.textContent = this.remainingGuesses;
 		this.ptrFound.textContent 			 = this.found;
 		this.ptrMisses.textContent 			 = this.misses;
 		this.ptrUsedLetters.textContent 	 = this.usedLetters;
 		this.ptrWord.textContent 			 = this.ulines;
+		$("#messagetext").css("display","none");
 		this.ptrMessage.textContent			 = this.message;
+		$("#messagetext").fadeIn(500);
 		return this;
 	},
 
 	// Initialize any variables in the object (probably a better way to do this)
-	init 				: function init() {
+	init : function () {
 		// Grab pointers to the dom objects that I'll be updating.
 		this.ptrRemainingGuesses = document.getElementById( "remaining" );
 		this.ptrFound 			 = document.getElementById( "foundletters" );
@@ -62,17 +64,23 @@ var game = {
 		this.ptrMessage          = document.getElementById( "messagetext" );
 		this.ptrWord 		     = document.getElementById( "word" );
 		this.ptrSadDiv		     = document.getElementById( "saddiv" );
+		// If the "play again" button is clicked, then play again.
+		$("#btnagain").click( function() {
+			location.reload();
+		});
 		// Initialize the word for the game
 		wordix = Math.floor( Math.random() * 100 );
 		this.word = this.wordlist[ wordix ];
 		this.wordlength = this.word.length;
 		this.ulines = this.ulines.substring( 0, this.wordlength );
 		this.updateDom();
-		// alert( this.word );
+		// A little welcoming message. . .
+		this.message = "Please take your time, there's so much at stake.";
+		this.updateDom();
 		return this;
 	},
 
-	keyPressed			: function keyPressed( pKey ) {
+	keyPressed : function ( pKey ) {
 
 		if ( this.gameOver ) { return }
 
@@ -132,19 +140,24 @@ var game = {
 			return;
 		} else if ( this.remainingGuesses < 1 ) {
 			// He lost
-			this.message = "Now, isn't that a shame. . . Please step up to the gallows.";
+			this.message = "The word was, '" + game.word + "'";
 			this.gameOver = true;
 			// this.ptrSadDiv.style.display = "block";
 			$("#sad").fadeIn( 1500 );
 
 			// After a breif delay show the word in the message box
 			setTimeout(function() { 
-				game.message = "The word was, '" + game.word + "'"; 
+				game.message = "Now, isn't that a shame. . . Please step up to the gallows."; 
 				game.updateDom();
-			}, 3000);
+			}, 2000);
 		}
 
-		
+		if ( this.gameOver ) {
+			setTimeout(function() { 
+				$("#btnagain").fadeIn(1000);
+			}, 4000);
+		}
+
 	},
 
 	replaceat 	: function(pString, index, character) {
@@ -158,11 +171,6 @@ var game = {
 window.onload = function() {
 	game.init();
 }
-
-// document.onkeyup = function( event ) {
-// 	console.log( event.key );
-// 	game.keyPressed( event.key );
-// }
 
 $(document).keyup( function(e) {
 	game.keyPressed( e.key.toLowerCase() );
