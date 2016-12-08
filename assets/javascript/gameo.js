@@ -74,7 +74,7 @@ var game = {
 		this.word = this.wordlist[ wordix ];
 		this.wordlength = this.word.length;
 		this.ulines = this.ulines.substring( 0, this.wordlength );
-		this.updateDom();
+		// this.updateDom();
 		// A little welcoming message. . .
 		this.message = "Please take your time, there's so much at stake.";
 		this.updateDom();
@@ -128,6 +128,7 @@ var game = {
 	},
 
 	checkStatus	: function() {
+		var delay = 4000;
 
 		if ( this.ulines === this.word ) {
 			// He won
@@ -137,12 +138,14 @@ var game = {
 			} else {
 				this.message = "Hmm... It seems that you live to play again.";
 			}
+			$("btnagain").text( "Feeling lucky?")
+			delay = 1000;
 			this.gameOver = true;
-			return;
 		} else if ( this.remainingGuesses < 1 ) {
 			// He lost
 			this.message = "The word was, '" + game.word + "'";
 			this.gameOver = true;
+			$("btnagain").text( ". . . Next ?");
 			// this.ptrSadDiv.style.display = "block";
 			$("#sad").fadeIn( 1500 );
 
@@ -156,7 +159,7 @@ var game = {
 		if ( this.gameOver ) {
 			setTimeout(function() { 
 				$("#btnagain").fadeIn(1000);
-			}, 4000);
+			}, delay);
 		}
 
 	},
